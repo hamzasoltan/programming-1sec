@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Information Systems & Digital Ethics | Chapter 1-3</title>
+<style>
+:root{
+  --bg:#090611;--card:#120c1d;--card2:#181024;--line:#2b1d3b;
+  --purple:#8b5cf6;--purple2:#a78bfa;--text:#f7f3ff;--muted:#b9afc9;
+  --green:#22c55e;--red:#ef4444;--gold:#f5c76b;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Segoe UI,Tahoma,Arial,sans-serif;background:
+radial-gradient(circle at 15% 10%,#2b1554 0,transparent 28%),
+radial-gradient(circle at 85% 20%,#1b1645 0,transparent 25%),var(--bg);color:var(--text);min-height:100vh}
+.container{width:min(1100px,92%);margin:auto}
+header{padding:52px 0 28px;text-align:center}
+.badge{display:inline-block;padding:8px 14px;border:1px solid #4b3270;background:#160e24;border-radius:999px;color:var(--purple2);font-size:13px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,54px);margin:0 0 12px;line-height:1.1}
+.subtitle{color:var(--muted);max-width:720px;margin:auto;line-height:1.8}
+.section-title{display:flex;align-items:center;gap:12px;margin:34px 0 16px}
+.section-title h2{margin:0;font-size:25px}.section-title span{color:var(--muted);font-size:13px}
+.materials{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.btn,.choice,.start-btn,.secondary{border:0;cursor:pointer;color:var(--text);font:inherit}
+.material{min-height:125px;padding:18px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,#171024,#0f0a17);transition:.2s;display:flex;flex-direction:column;justify-content:space-between}
+.material:hover{transform:translateY(-3px);border-color:#60418c;box-shadow:0 12px 35px #0005}
+.icon{font-size:27px}.material strong{font-size:15px;line-height:1.5}.material small{color:var(--muted);direction:ltr;text-align:right}
+.material a{color:inherit;text-decoration:none;display:flex;flex-direction:column;gap:10px;height:100%}
+.exam-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.question-box{margin-top:30px;padding:22px;border:1px solid var(--line);background:linear-gradient(145deg,#171024,#0f0a17);border-radius:20px}
+.question-input{width:100%;min-height:120px;resize:vertical;background:#0b0711;color:var(--text);border:1px solid #35244a;border-radius:13px;padding:15px;font:inherit;line-height:1.8;outline:none}
+.question-input:focus{border-color:var(--purple);box-shadow:0 0 0 3px #8b5cf622}
+.exam-card{padding:25px;border:1px solid var(--line);background:var(--card);border-radius:20px}
+.exam-card h3{margin:0 0 8px}.exam-card p{color:var(--muted);line-height:1.7}.exam-meta{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.tag{padding:7px 10px;background:#20152f;border:1px solid #35244a;border-radius:999px;font-size:12px;color:#d6c9e9}
+.start-btn{background:linear-gradient(135deg,var(--purple),#6d28d9);padding:13px 20px;border-radius:12px;font-weight:700;width:100%}
+.secondary{background:#1c1329;border:1px solid var(--line);padding:11px 16px;border-radius:11px}
+.hidden{display:none!important}
+.quiz{margin:30px 0 50px}.quiz-head{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:15px}
+.progress{height:8px;background:#21162e;border-radius:99px;overflow:hidden}.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--purple),var(--purple2));width:0}
+.question-card{margin-top:18px;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:25px}
+.qtype{color:var(--purple2);font-size:13px;font-weight:700}.question{font-size:21px;line-height:1.7;margin:12px 0 22px}
+.choices{display:grid;gap:11px}.choice{text-align:right;padding:15px;border:1px solid #322343;background:#100a18;border-radius:13px;transition:.15s}
+.choice:hover{border-color:#7450a7;background:#181025}.choice.selected{border-color:var(--purple);background:#241438}.choice.correct{border-color:var(--green);background:#0e2819}.choice.wrong{border-color:var(--red);background:#2a1114}
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:18px}.nav button{padding:12px 18px;border-radius:11px}
+.result{margin:30px 0 50px;text-align:center}.score{font-size:58px;font-weight:800;color:var(--purple2);margin:8px}.result-card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:30px}
+.review{text-align:right;margin-top:25px}.review-item{padding:18px;margin:12px 0;border:1px solid var(--line);border-radius:15px;background:#0f0a17}.review-item.good{border-right:4px solid var(--green)}.review-item.bad{border-right:4px solid var(--red)}
+.review-q{font-weight:700;line-height:1.7}.answer{margin-top:8px;color:var(--muted);line-height:1.7}.explain{margin-top:12px;padding:12px;background:#171022;border-radius:10px;color:#d8cee5;line-height:1.8}
+footer{padding:35px 0;text-align:center;color:#817590;font-size:12px}
+@media(max-width:850px){.materials{grid-template-columns:1fr 1fr}.exam-grid{grid-template-columns:1fr}}
+@media(max-width:520px){.materials{grid-template-columns:1fr}.container{width:94%}.question-card{padding:18px}.question{font-size:18px}.quiz-head{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <div class="badge">CHAPTER 1–3 • INFORMATION SYSTEMS & DIGITAL ETHICS</div>
+  <h1>بوابة الاختبار والمراجعة</h1>
+  <p class="subtitle">راجع المادة، شاهد الشرح، ثم اختبر فهمك في الخصوصية وحقوق الملكية الفكرية وأمن المعلومات والتشفير.</p>
+</header>
+
+<section>
+<div class="section-title"><h2>📚 مواد Chapter 1–3</h2></div>
+<div class="materials">
+  <div class="material"><a href="Chapter 1-3.pdf" download><span class="icon">📘</span><strong>لتحميل Chapter 1-3</strong><small>Chapter 1-3.pdf</small></a></div>
+  <div class="material"><a href="Chapter 1-3 Summary.pdf" download><span class="icon">📄</span><strong>لتحميل ملخص Chapter 1-3</strong><small>Chapter 1-3 Summary.pdf</small></a></div>
+  <div class="material"><a href="Chapter 1-3 EN.mp4" target="_blank"><span class="icon">🎬</span><strong>فيديو شرح Chapter 1-3 EN</strong><small>Chapter 1-3 EN.mp4</small></a></div>
+  <div class="material"><a href="Chapter 1-3 AR.mp4" target="_blank"><span class="icon">🎬</span><strong>فيديو شرح Chapter 1-3 AR</strong><small>Chapter 1-3 AR.mp4</small></a></div>
+</div>
+</section>
+
+<section class="question-box">
+  <textarea id="questionInput" class="question-input" placeholder="اكتب سؤالك هنا..."></textarea>
+  <button class="start-btn whatsapp-btn" type="button" onclick="sendQuestionToWhatsApp()">📱 إرسال السؤال على واتساب</button>
+</section>
+
+<section id="home">
+<div class="section-title"><h2>📝 الاختبارات</h2><span>30 سؤالًا لكل اختبار</span></div>
+<div class="exam-grid">
+ <div class="exam-card">
+  <h3>الاختبار الأول</h3>
+  <p>البيانات والمجتمع الرقمي، الخصوصية، وحقوق الملكية الفكرية.</p>
+  <div class="exam-meta"><span class="tag">15 صح / خطأ</span><span class="tag">15 اختيار من متعدد</span><span class="tag">30 سؤال</span></div>
+  <button class="start-btn" onclick="startQuiz(0)">ابدأ الاختبار الأول</button>
+ </div>
+ <div class="exam-card">
+  <h3>الاختبار الثاني</h3>
+  <p>أمن المعلومات، التهديدات الرقمية، المصادقة، والتشفير.</p>
+  <div class="exam-meta"><span class="tag">15 صح / خطأ</span><span class="tag">15 اختيار من متعدد</span><span class="tag">30 سؤال</span></div>
+  <button class="start-btn" onclick="startQuiz(1)">ابدأ الاختبار الثاني</button>
+ </div>
+</div>
+</section>
+
+<section id="quiz" class="quiz hidden">
+ <div class="quiz-head"><strong id="quizTitle"></strong><span id="counter"></span></div>
+ <div class="progress"><i id="bar"></i></div>
+ <div class="question-card">
+   <div class="qtype" id="qtype"></div>
+   <div class="question" id="question"></div>
+   <div class="choices" id="choices"></div>
+   <div class="nav"><button class="secondary" onclick="prevQ()">السابق</button><button class="start-btn" id="nextBtn" onclick="nextQ()">التالي</button></div>
+ </div>
+</section>
+
+<section id="result" class="result hidden">
+ <div class="result-card">
+  <div>نتيجة الاختبار</div><div class="score" id="score"></div><div id="resultText"></div>
+  <div class="review" id="review"></div>
+  <button class="start-btn" onclick="location.reload()">العودة للاختبارات</button>
+ </div>
+</section>
+
+<footer>Chapter 1–3 • Interactive Study & Assessment</footer>
+</div>
+
+<script>
+const tests = [
+{
+title:"الاختبار الأول — البيانات والمجتمع الرقمي والملكية الفكرية",
+questions:[
+["TF","تُعرَّف البيانات بأنها المعرفة التي تم تحليلها وتنظيمها للمساعدة في حل المشكلات.","خطأ","البيانات هي حقائق أو رموز دون سياق؛ أما المعرفة فهي الناتجة عن تحليل وتنظيم المعلومات."],
+["TF","تتميز المعلومات بخصائص متعددة منها الاستمرارية والتكرارية/قابلية النسخ والانتشار.","صواب","هذه من الخصائص الأساسية للمعلومات الرقمية."],
+["TF","تُصنف الكتب والصحف والتلفزيون كمعلومات أولية لأنها تُحصل مباشرة دون أطراف ثالثة.","خطأ","هذه أمثلة على المعلومات الثانوية لأنها تصل عبر طرف ثالث."],
+["TF","تُعد أجهزة التخزين السحابي وأقراص DVD من وسائط التعبير.","خطأ","هي من وسائط التسجيل/الحفظ."],
+["TF","تنشأ حقوق الطبع والنشر وفق مبدأ عدم الشكلية بمجرد ابتكار العمل ولا تتطلب تسجيلاً رسمياً.","صواب","وفق المادة الدراسية، تنشأ حقوق الطبع والنشر تلقائياً عند ابتكار العمل."],
+["TF","تخضع حقوق الملكية الصناعية لمبدأ الشكلية، حيث تُمنح الحقوق بعد تقديم طلب وتسجيله لدى مكتب براءات الاختراع.","صواب","الملكية الصناعية تتطلب إجراءات رسمية للحصول على الحماية."],
+["TF","تُمنح حقوق نموذج المنفعة لحماية الشكل الخارجي أو الأنماط المبتكرة للمنتج لمدة 10 سنوات.","خطأ","وفق المصدر، نموذج المنفعة مدته 7 سنوات؛ أما الشكل الخارجي والأنماط فتدخل في حقوق التصميم ومدتها 10 سنوات."],
+["TF","تشمل العناصر الأساسية الأربعة للبيانات الشخصية: الاسم، العنوان، تاريخ الميلاد، والجنس.","صواب","هذه هي العناصر الأربعة المذكورة في المادة."],
+["TF","رقم الجواز ورقم رخصة القيادة يُعدان من أكواد التعريف الشخصي.","صواب","كلاهما مثال على Personal Identification Codes."],
+["TF","المعلومات الشخصية للمتوفى تُحمى بنفس أحكام قانون حماية البيانات الشخصية للأحياء لمدة 50 عاماً بعد الوفاة.","خطأ","وفق المادة، قانون حماية البيانات الشخصية المقصود ينطبق على الأفراد الأحياء."],
+["TF","يحصل المبتكر بموجب قانون حقوق الطبع والنشر على نوعين من الحقوق: الحقوق الأدبية والحقوق المادية.","صواب","الحقوق الأدبية تحمي صلة المؤلف بعمله، والمادية تحمي مصالحه المالية."],
+["TF","تنتهي الحماية المالية المادية لحقوق الطبع والنشر بمجرد وفاة المؤلف مباشرة.","خطأ","تمتد الحماية وفق المادة طوال حياة المؤلف و50 عاماً بعد وفاته."],
+["TF","يتيح ترخيص المشاع الإبداعي NC استخدام العمل لأغراض تجارية بشرط نسب العمل لصاحبه.","خطأ","NC تعني Non-Commercial، أي تمنع الاستخدام التجاري."],
+["TF","إعادة نسخ المواد التعليمية وتوزيعها على الطلاب داخل المؤسسات التعليمية استثناء مسموح به ولا يعتبر انتهاكاً لحقوق الطبع والنشر.","صواب","وفق المادة، الاستخدام التعليمي داخل الفصول من الاستثناءات المسموح بها."],
+["TF","يسمح بنقل نص من كتاب آخر في بحثك دون ذكر المصدر الأصلي طالما وضعت النص بين علامتي تنصيص.","خطأ","لابد من تحديد وعزو المصدر الأصلي بوضوح."],
+["MC","تسمى عملية مقارنة المعلومات الثانوية مع مصادر أخرى من زوايا متعددة للتأكد من دقتها بـ:",["التشفير (Encryption)","الفحص المتقاطع (Cross-checking)","الوسائط التعبيرية (Expression media)","الترقيم الجغرافي (Geotagging)"],1,"الفحص المتقاطع يعني مقارنة المعلومات مع عدة مصادر للتحقق من دقتها."],
+["MC","تُصنف النصوص والصور ومقاطع الصوت والفيديو ضمن وسائط:",["وسائط التسجيل (Recording media)","وسائط الانتشار/النقل (Propagation media)","وسائط التعبير (Expression media)","الوسائط الفائقة (Hyper media)"],2,"وسائط التعبير هي وسائل تمثيل المعلومة مثل النص والصورة والصوت والفيديو."],
+["MC","القدرة على تفسير المعلومات وفهم خصائص الوسائط بدقة تُعرف بـ:",["محو الأمية المعلوماتية/الوسائطية (Media literacy)","الإدمان الرقمي (Internet addiction)","التشفير المتماثل (Symmetric encryption)","الهندسة الاجتماعية (Social engineering)"],0,"Media literacy هي القدرة على فهم وتفسير ونقد رسائل الوسائط."],
+["MC","البيانات التي تتضمن إحداثيات خطوط الطول والعرض المدمجة في الصور الملتقطة بالهواتف تُسمى:",["كود التعريف الشخصي (Personal ID Code)","الوسوم الجغرافية (Geotags)","التوقيع الرقمي (Digital signature)","حقوق الملكية الصناعية (Industrial property)"],1,"Geotags هي بيانات الموقع الجغرافي المرفقة بالصورة."],
+["MC","تستمر فترة حماية براءة الاختراع لمدة:",["7 سنوات من تاريخ تقديم الطلب","10 سنوات من تاريخ التسجيل","20 سنة من تاريخ تقديم الطلب","طوال حياة المخترع + 50 سنة بعد وفاته"],2,"وفق المادة، مدة براءة الاختراع 20 سنة من تاريخ تقديم الطلب."],
+["MC","أي من الخيارات التالية يُعد حماية للحقوق المجاورة لحقوق الطبع والنشر؟",["حقوق براءات الاختراع للمخترعين","حقوق المؤدين مثل المغنين والممثلين وشركات التسجيل","حقوق العلامات التجارية للشركات","حقوق نموذج المنفعة للهياكل الصناعية"],1,"الحقوق المجاورة تشمل حقوق المؤدين وهيئات التسجيل والبث."],
+["MC","تُعرف الحقوق التي تحمي الاسم التجاري والشعار والأصوات المميزة للمنتجات بـ:",["حقوق التصميم","حقوق براءة الاختراع","حقوق العلامات التجارية","حقوق الملكية الأدبية"],2,"العلامات التجارية تحمي الاسم والشعار والعلامات المميزة."],
+["MC","تتضمن البيانات الشخصية ذات العناية الخاصة:",["الاسم والعنوان فقط","السجل الطبي والعرق والعقيدة والسجل الإجرامي","رقم رخصة القيادة ورقم الهاتف","نتائج الاستبيانات والاستطلاعات العامة"],1,"هذه أمثلة على البيانات الحساسة التي تتطلب عناية خاصة."],
+["MC","النظام الذي يمنع جمع بيانات المستخدم أو تقديم الخدمة له إلا بعد الحصول على موافقته المسبقة هو:",["نظام الاعتراض","نظام الموافقة المسبقة","نظام التشفير المتماثل","نظام الجدار الناري"],1,"Prior Approval يعتمد على الحصول على موافقة المستخدم قبل الجمع أو تقديم الخدمة."],
+["MC","أي من الشروط التالية أساسي ليكون الاقتباس قانونياً وبدون إذن؟",["أن يكون النص المقتبس الجزء الأساسي والرئيسي","تعديل النص المقتبس ليتناسب مع رأي الكاتب الجديد","أن يكون الجزء المقتبس فرعياً وتابعاً للعمل الأصلي مع تحديد المصدر بوضوح","بيع العمل المقتبس للحصول على أرباح تجارية"],2,"الاقتباس القانوني يجب أن يكون فرعياً مع ذكر المصدر بوضوح."],
+["MC","أي رمز من رموز المشاع الإبداعي يمنع تعديل أو تحريف العمل الأصلي؟",["BY","NC","ND","SA"],2,"ND تعني No Derivatives، أي عدم إنتاج أعمال مشتقة."],
+["MC","تُحمي حقوق العلانية (Publicity Rights):",["المصالح الاقتصادية للمشاهير الناجمة عن استخدام صورهم أو أشكالهم","البرامج والتطبيقات من الفيروسات","المعلومات العسكرية للحكومة","الصور الشخصية للأفراد العاديين من الالتقاط بدون إذن"],0,"حقوق العلانية تحمي القيمة الاقتصادية لاستخدام صورة أو شكل الشخص، خصوصاً في سياق المشاهير."],
+["MC","تُصنف المعلومات التي يتم الحصول عليها عن طريق التجربة المباشرة أو الاستبيانات التي أجراها الباحث بنفسه كـ:",["معلومات ثانوية","معلومات أولية","برمجيات خبيثة","وسائط انتشار"],1,"المعلومات الأولية يجمعها الباحث مباشرة من التجربة أو الاستبيان."],
+["MC","مدة حماية حقوق الطبع والنشر وفق المادة هي:",["20 سنة من تاريخ النشر","طوال حياة المؤلف + 50 سنة بعد وفاته","10 سنوات قابلة للتجديد","7 سنوات من تاريخ تقديم الطلب"],1,"وفق المادة، تمتد الحقوق المالية طوال حياة المؤلف و50 عاماً بعد الوفاة."],
+["MC","حقوق التصميم تحمي:",["الأفكار التقنية المتطورة والاختراعات","المظهر أو الشكل الخارجي والأنماط المبتكرة للمنتج","البرمجيات والتطبيقات الإلكترونية","التسجيلات الصوتية والبث الإذاعي"],1,"حقوق التصميم تختص بالمظهر والشكل والنقوش والأنماط المبتكرة للمنتج."]
+]
+},
+{
+title:"الاختبار الثاني — أمن المعلومات والتهديدات الرقمية والتشفير",
+questions:[
+["TF","العناصر الثلاثة الرئيسية لأمن المعلومات هي السرية والنزاهة والتوفر.","صواب","هذه هي CIA Triad: Confidentiality, Integrity, Availability."],
+["TF","ضرب موقع إلكتروني بهجوم حجب الخدمة حتى يتوقف عن العمل يُعد انتهاكاً لسرية المعلومات.","خطأ","تعطيل الخدمة يمس التوفر Availability."],
+["TF","يطلق مصطلح Cracking/Cracker على الشخص الذي يدخل للأنظمة بشكل غير قانوني لتدمير أو سرقة البيانات.","صواب","المادة تستخدم Cracker للدخول الخبيث غير المصرح به."],
+["TF","برمجيات الفدية هي برامج أمنية تستخدم لتشفير النسخ الاحتياطية وحمايتها من الضياع.","خطأ","Ransomware برمجيات خبيثة تشفر البيانات وتطلب فدية."],
+["TF","برنامج الدودة يتميز بقدرته على نسخ نفسه والانتشار عبر شبكة الإنترنت تلقائياً.","صواب","Worm يستطيع نسخ نفسه والانتشار عبر الشبكات."],
+["TF","استخدام معرف وكلمة مرور شخص آخر لدخول موقع دون إذنه مخالفة لقانون مكافحة الدخول غير المصرح به.","صواب","الدخول باستخدام بيانات شخص آخر دون إذن يدخل ضمن الدخول غير المصرح به."],
+["TF","بصمة الإصبع وبصمة العين من وسائل المصادقة القائمة على المعرفة.","خطأ","هما من المصادقة الحيوية Biometric."],
+["TF","المصادقة ثنائية العوامل تتطلب استخدام عنصرين مختلفين من فئات المعرفة والملكية والبصمات الحيوية.","صواب","2FA يعتمد على عاملين من فئتين مختلفتين."],
+["TF","الجدار الناري يوضع عند نقطة دخول الشبكة لمنع الاختراقات الخارجية والحد من تسريب البيانات داخلياً.","صواب","Firewall يعمل كحاجز ومرشح لحركة الشبكة."],
+["TF","في التشفير المتماثل تستخدم مفاتيح مختلفة للتشفير وفك التشفير.","خطأ","يستخدم نفس المفتاح المشترك للتشفير وفك التشفير."],
+["TF","سرعة التشفير وفك التشفير بالمفتاح العام أسرع بكثير مقارنة بالتشفير المتماثل.","خطأ","التشفير العام أبطأ من التشفير المتماثل."],
+["TF","ينشأ التوقيع الرقمي عن طريق تشفير قيمة الهاش باستخدام المفتاح الخاص بالمرسل.","صواب","هذا يربط التوقيع بالمرسل ويتيح التحقق من سلامة المحتوى."],
+["TF","يمكن إعادة تشكيل النص الأصلي بسهولة من خلال قيمة الهاش الناتجة عنه.","خطأ","Hash دالة أحادية الاتجاه ولا تعيد النص الأصلي."],
+["TF","أسلوب النظر من فوق الكتف هو أحد أساليب الهندسة الاجتماعية للحصول على كلمات السر.","صواب","Shoulder surfing يعتمد على مراقبة الشخص أثناء إدخال معلوماته."],
+["TF","بروتوكول SSL/TLS يستخدم لتشفير الاتصالات بين متصفح الويب وخادم الويب ويظهر في عنوان الموقع كـ https://.","صواب","HTTPS يستخدم TLS لتأمين الاتصال بين العميل والخادم."],
+["MC","حالة الحفاظ على البيانات سليمة ومنع تعديلها أو إتلافها أو حذفها من قبل غير المصرح لهم تُعرف بـ:",["السرية (Confidentiality)","النزاهة/الترابط (Integrity)","التوفر (Availability)","التشفير (Encryption)"],1,"Integrity تعني الحفاظ على سلامة البيانات ومنع التلاعب غير المصرح به."],
+["MC","برنامج خبيث يتخفى في شكل برنامج شرعي ونافع بينما يقوم بهجمات سرية داخل الجهاز هو:",["الدودة (Worm)","حصان طروادة (Trojan Horse)","برمجيات الإعلانات (Adware)","مسجل ضغطات المفاتيح (Keylogger)"],1,"Trojan يتنكر في صورة برنامج شرعي لخداع المستخدم."],
+["MC","البرمجيات التي تقوم بتجميع وقراءة سجل ضغطات لوحة المفاتيح لسرد كلمات السر تسمى:",["Keylogger","Firewall","Ransomware","Geotag"],0,"Keylogger يسجل ضغطات لوحة المفاتيح وقد يلتقط كلمات السر."],
+["MC","طريقة المصادقة التي تعتمد على Smart IC Card أو الرموز المرسلة عبر SMS تصنف ضمن:",["Knowledge-based","Biometric","Possession-based","Digital signature"],2,"العامل هنا شيء يملكه المستخدم: بطاقة أو هاتف يستقبل الرمز."],
+["MC","أي من الخيارات التالية يعد الممارسة الفضلى عند إنشاء كلمة المرور؟",["استخدام رقم الهاتف وتاريخ الميلاد","إعادة استخدام نفس كلمة المرور لجميع الحسابات","المزج بين حروف كبيرة وصغيرة وأرقام ورموز وأن تكون طويلة","الاحتفاظ بكلمة المرور الافتراضية"],2,"كلمة المرور الطويلة والمتنوعة أصعب في التخمين والهجمات الآلية."],
+["MC","احتيال يتم فيه إنشاء موقع ويب مزيف يشبه المؤسسات المالية لسرقة الحسابات والبطاقات يعرف بـ:",["One-click fraud","Dumpster diving","Phishing","Skimming"],2,"Phishing يعتمد على خداع المستخدم بصفحات أو رسائل مزيفة لسرقة البيانات."],
+["MC","العملية التي يتم فيها استخراج بيانات البطاقات البنكية أو الائتمانية بشكل غير قانوني لصنع بطاقة مزيفة تسمى:",["Skimming","Phishing","Geotagging","Cracking"],0,"Skimming هو التقاط بيانات البطاقة من وسائل القراءة غير المشروعة."],
+["MC","في التشفير بالمفتاح العام، يتم تشفير الرسالة بـ:",["المفتاح الخاص بالمرسل","المفتاح العام للمستلم","المفتاح المشترك","مفتاح التوقيع فقط"],1,"لتشفير رسالة للمستلم يستخدم المرسل المفتاح العام للمستلم، ويفكها المستلم بمفتاحه الخاص."],
+["MC","الجهة الثالثة الموثوقة التي تصدر الشهادات الرقمية للتحقق من ملكية المفتاح العام هي:",["مكتب براءات الاختراع","سلطة التصديق/الشهادات (CA)","الجدار الناري","مزود خدمة الإنترنت"],1,"Certification Authority تصدر الشهادات الرقمية وتوثق ارتباط الهوية بالمفتاح العام."],
+["MC","طريقة التشفير الهجينة التي تجمع بين سرعة التشفير المتماثل وسهولة إدارة المفاتيح في التشفير العام هي:",["طريقة مفتاح الجلسة (Session key method)","التشفير باستخدام الهاش","بروتوكول حجب الخدمة","نظام الاعتراض المباشر"],0,"يستخدم التشفير العام لتبادل مفتاح جلسة متماثل، ثم يستخدم المفتاح المتماثل بسرعة لتشفير البيانات."],
+["MC","البحث في سلة المهملات والقمامة للحصول على وثائق ومستندات سرية يعرف بـ:",["Shoulder surfing","Impersonation","Dumpster diving","Phishing"],2,"Dumpster diving هو البحث في النفايات عن معلومات مهملة يمكن استغلالها."],
+["MC","كلمة المرور المؤقتة التي تتغير في فترات زمنية محددة وتستخدم لمرة واحدة فقط تسمى:",["One-time password (OTP)","Hash value","Private key","Biometric key"],0,"OTP رمز مؤقت لمرة واحدة أو لفترة قصيرة."],
+["MC","المصادقة التي تستخدم الخصائص الفيزيائية مثل نمط الأوردة وشبكية العين وبصمة الإصبع هي:",["Possession authentication","Biometric authentication","Knowledge-based authentication","Two-step authentication"],1,"Biometric تعتمد على خصائص جسمية مميزة للمستخدم."],
+["MC","البرمجيات الخبيثة التي تعرض إعلانات غير مرغوب فيها دون موافقة المستخدم تسمى:",["Adware","Spyware","Worm","Trojan"],0,"Adware مصمم لعرض إعلانات غير مرغوب فيها."],
+["MC","الخاصية الأساسية لدالة الهاش هي:",["إمكانية فك تشفيرها وإعادة البيانات لأصلها بسرعة","توليد قيمة ثابتة باتجاه واحد ولا يمكن استرجاع النص الأصلي منها","تبطيء سرعة نقل البيانات عبر الويب","إنشاء كلمات سر عشوائية للمستخدمين"],1,"Hash function تنتج قيمة ملخصة أحادية الاتجاه؛ لا تستخدم لاسترجاع النص الأصلي."]
+]
+}
+];
+
+let currentTest=0,current=0,answers=[],finished=false;
+const questionInput=document.getElementById("questionInput");
+function sendQuestionToWhatsApp(){
+  const text=questionInput.value.trim();
+  if(!text){
+    alert("اكتب سؤالك أولاً.");
+    questionInput.focus();
+    return;
+  }
+  const message=`السلام عليكم ورحمة الله وبركاته\nعندي سؤال في Chapter 1-3 1sec\n"${text}"`;
+  const phone="201007408751";
+  window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`,"_blank");
+}
+
+
+function startQuiz(t){
+ currentTest=t;current=0;answers=Array(tests[t].questions.length).fill(null);finished=false;
+ document.getElementById("home").classList.add("hidden");
+ document.getElementById("result").classList.add("hidden");
+ document.getElementById("quiz").classList.remove("hidden");
+ render();
+ window.scrollTo({top:document.getElementById("quiz").offsetTop-15,behavior:"smooth"});
+}
+function render(){
+ const qs=tests[currentTest].questions,q=qs[current];
+ document.getElementById("quizTitle").textContent=tests[currentTest].title;
+ document.getElementById("counter").textContent=`السؤال ${current+1} من ${qs.length}`;
+ document.getElementById("bar").style.width=((current+1)/qs.length*100)+"%";
+ document.getElementById("qtype").textContent=q[0]==="TF"?"صح أم خطأ":"اختيار من متعدد";
+ document.getElementById("question").textContent=q[1];
+ const box=document.getElementById("choices");box.innerHTML="";
+ const options=q[0]==="TF"?["صواب","خطأ"]:q[2];
+ options.forEach((opt,i)=>{
+  const b=document.createElement("button");b.className="choice";
+  const val=q[0]==="TF"?opt:i;
+  b.textContent=opt;
+  if(answers[current]===val)b.classList.add("selected");
+  b.onclick=()=>{answers[current]=val;render()};
+  box.appendChild(b);
+ });
+ const nb=document.getElementById("nextBtn");
+ nb.textContent=current===qs.length-1?"إنهاء الاختبار":"التالي";
+ document.querySelector(".nav button:first-child").disabled=current===0;
+}
+function prevQ(){if(current>0){current--;render()}}
+function nextQ(){
+ if(answers[current]===null){alert("اختر إجابة أولاً.");return}
+ if(current<tests[currentTest].questions.length-1){current++;render()}
+ else finishQuiz();
+}
+function finishQuiz(){
+ let correct=0;const qs=tests[currentTest].questions;
+ qs.forEach((q,i)=>{let right=q[0]==="TF"?q[2]:q[3];if(answers[i]===right)correct++});
+ const pct=Math.round(correct/qs.length*100);
+ document.getElementById("quiz").classList.add("hidden");
+ document.getElementById("result").classList.remove("hidden");
+ document.getElementById("score").textContent=`${correct} / ${qs.length}`;
+ document.getElementById("resultText").textContent=`النسبة: ${pct}% — ${pct>=85?"ممتاز!":pct>=70?"جيد جداً!":pct>=50?"جيد، راجع الأخطاء.":"تحتاج إلى مراجعة المادة مرة أخرى."}`;
+ const review=document.getElementById("review");review.innerHTML="<h3>📋 مراجعة الإجابات والشرح</h3>";
+ qs.forEach((q,i)=>{
+   const right=q[0]==="TF"?q[2]:q[2][q[3]];
+   const user=q[0]==="TF"?answers[i]:(answers[i]===null?"لم تتم الإجابة":q[2][answers[i]]);
+   const ok=user===right;
+   const div=document.createElement("div");div.className="review-item "+(ok?"good":"bad");
+   div.innerHTML=`<div class="review-q">${i+1}. ${q[1]}</div>
+   <div class="answer">إجابتك: <b>${user}</b><br>الإجابة الصحيحة: <b>${right}</b></div>
+   <div class="explain">💡 ${q[q[0]==="TF"?3:4]}</div>`;
+   review.appendChild(div);
+ });
+ window.scrollTo({top:document.getElementById("result").offsetTop-15,behavior:"smooth"});
+}
+</script>
+</body>
+</html>
