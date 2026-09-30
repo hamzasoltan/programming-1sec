@@ -1,0 +1,380 @@
+Source: 17_Exams_Bank_ICT_Sec1_v2.docx
+{
+  "1": {
+    "questions": 30,
+    "mcq_options": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "answers": 30,
+    "explanations": 30
+  },
+  "2": {
+    "questions": 30,
+    "mcq_options": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "answers": 30,
+    "explanations": 30
+  },
+  "3": {
+    "questions": 30,
+    "mcq_options": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "answers": 30,
+    "explanations": 30
+  },
+  "4": {
+    "questions": 30,
+    "mcq_options": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "answers": 30,
+    "explanations": 30
+  },
+  "5": {
+    "questions": 30,
+    "mcq_options": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "answers": 30,
+    "explanations": 30
+  },
+  "6": {
+    "questions": 30,
+    "mcq_options": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "answers": 30,
+    "explanations": 30
+  },
+  "7": {
+    "questions": 30,
+    "mcq_options": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "answers": 30,
+    "explanations": 30
+  },
+  "8": {
+    "questions": 30,
+    "mcq_options": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "answers": 30,
+    "explanations": 30
+  },
+  "9": {
+    "questions": 30,
+    "mcq_options": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "answers": 30,
+    "explanations": 30
+  },
+  "10": {
+    "questions": 30,
+    "mcq_options": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "answers": 30,
+    "explanations": 30
+  },
+  "11": {
+    "questions": 30,
+    "mcq_options": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "answers": 30,
+    "explanations": 30
+  },
+  "12": {
+    "questions": 30,
+    "mcq_options": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "answers": 30,
+    "explanations": 30
+  },
+  "13": {
+    "questions": 30,
+    "mcq_options": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "answers": 30,
+    "explanations": 30
+  },
+  "14": {
+    "questions": 30,
+    "mcq_options": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "answers": 30,
+    "explanations": 30
+  },
+  "15": {
+    "questions": 30,
+    "mcq_options": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "answers": 30,
+    "explanations": 30
+  },
+  "16": {
+    "questions": 30,
+    "mcq_options": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "answers": 30,
+    "explanations": 30
+  },
+  "17": {
+    "questions": 30,
+    "mcq_options": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "answers": 30,
+    "explanations": 30
+  }
+}
+ISSUES:
+{}
+FINAL V12 structural fixes applied: duplicate JS declaration removed; NEXT filename routing fixed; stage IDs aligned to course order; question contamination removed; exam theme toggle added.

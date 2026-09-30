@@ -1,99 +1,674 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Programming Course</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Program 1sec // Learning Map</title>
 <style>
-:root{--bg:#080611;--card:#120d1d;--card2:#181126;--line:#2b203d;--text:#f7f2fb;--muted:#a99db7;--purple:#8b5cf6;--purple2:#6d28d9;--green:#22c55e;--red:#ef4444}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -10%,#24123d 0,#080611 45%);color:var(--text);font-family:Tahoma,Arial,sans-serif;min-height:100vh}
-.container{width:min(1120px,92%);margin:auto;padding:38px 0 60px}
-.hero{padding:34px 0 25px}.eyebrow{color:#bfa7dc;font-size:13px;font-weight:bold;letter-spacing:1px}.hero h1{font-size:clamp(30px,5vw,52px);margin:10px 0 8px}.hero p{color:var(--muted);margin:0;line-height:1.8}
-.progress-card{background:linear-gradient(145deg,#171024,#0f0a17);border:1px solid var(--line);border-radius:22px;padding:20px;margin:10px 0 28px}
-.progress-top{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:12px}.progress-top span:last-child{color:#cbb9dd;font-weight:bold}
-.progress{height:10px;background:#21172e;border-radius:99px;overflow:hidden}.progress div{height:100%;width:0;background:linear-gradient(90deg,var(--purple2),var(--purple));transition:.35s}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.stage{position:relative;background:linear-gradient(145deg,var(--card),#0e0916);border:1px solid var(--line);border-radius:19px;padding:19px;min-height:145px;transition:.2s}.stage.unlocked:hover{transform:translateY(-2px);border-color:#55377b}.stage.locked{opacity:.62}.stage.done{border-color:#245f39}.num{font-size:12px;color:#9f8bb2}.stage-title{font-size:20px;font-weight:800;margin:8px 0}.status{font-size:13px;color:var(--muted)}.stage.done .status{color:#6ee7a0}.stage.unlocked .status{color:#c4b5fd}.stage-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.btn{border:0;border-radius:11px;padding:10px 13px;color:white;text-decoration:none;font-weight:bold;font-size:13px;cursor:pointer;background:#21172e}.btn.primary{background:linear-gradient(135deg,var(--purple),var(--purple2))}.btn:disabled{opacity:.4;cursor:not-allowed}.content-links{display:none;gap:7px;flex-wrap:wrap}.unlocked .content-links{display:flex}.lock{position:absolute;left:18px;top:18px;font-size:18px}
-.notice{margin-top:24px;padding:15px 17px;border-radius:15px;background:#100c18;border:1px solid var(--line);color:var(--muted);line-height:1.8}
-@media(max-width:720px){.grid{grid-template-columns:1fr}.container{padding-top:24px}.stage{min-height:auto}.hero h1{font-size:34px}}
+:root{
+  --bg:#06100e;--bg2:#081713;--panel:#0b1b17;--panel2:#10231e;
+  --line:#245b50;--teal:#2a7d6e;--teal2:#46b19b;
+  --text:#f4fbf8;--muted:#9abbb3;--gold:#d8b45a;--danger:#c87575;
+}
+:root[data-theme="light"]{
+  --bg:#f4faf8;--bg2:#eaf5f1;--panel:#ffffff;--panel2:#f0f8f5;
+  --line:#a9d1c7;--teal:#287a6b;--teal2:#176254;
+  --text:#12352e;--muted:#55766e;--gold:#92721c;--danger:#a64f4f;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;min-height:100vh;color:var(--text);
+  background:radial-gradient(circle at 50% 0,#12352d 0,var(--bg) 40%,var(--bg) 100%);
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  transition:background .25s,color .25s;
+}
+a{color:inherit}
+.navbar{
+  position:sticky;top:0;z-index:100;
+  background:color-mix(in srgb,var(--bg) 91%,transparent);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  width:min(1120px,92%);height:70px;margin:auto;
+  display:flex;align-items:center;gap:30px;
+}
+.brand{
+  text-decoration:none;font-size:20px;font-weight:950;letter-spacing:1px;
+  color:var(--text);white-space:nowrap;
+}
+.brand span{color:var(--teal2)}
+.nav-links{display:flex;align-items:center;gap:24px;margin-right:auto}
+.nav-links a,.mobile-menu a{
+  text-decoration:none;color:var(--muted);font-size:12px;transition:.2s;
+}
+.nav-links a:hover,.mobile-menu a:hover{color:var(--teal2)}
+.nav-actions{display:flex;gap:8px}
+.theme-btn,.menu-btn{
+  border:1px solid var(--line);background:var(--panel);
+  color:var(--text);border-radius:10px;padding:9px 12px;
+  font:inherit;font-size:11px;cursor:pointer;transition:.2s;
+}
+.theme-btn:hover,.menu-btn:hover{border-color:var(--teal2);transform:translateY(-1px)}
+.menu-btn{display:none;font-size:17px}
+.mobile-menu{
+  display:none;width:min(1120px,92%);margin:auto;padding:8px 0 15px;
+  gap:10px;flex-direction:column;
+}
+.mobile-menu.open{display:flex}
+.hero{width:min(1120px,92%);margin:auto;padding:45px 0 25px}
+.hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.eyebrow{color:var(--teal2);font-size:11px;letter-spacing:2px;margin-bottom:10px}
+h1{margin:0;font-size:clamp(30px,6vw,52px);line-height:1.1}
+.hero p{color:var(--muted);line-height:1.9;margin:12px 0 0;max-width:650px;font-size:13px}
+.hero-badge{
+  border:1px solid var(--line);border-radius:999px;padding:9px 13px;
+  color:var(--teal2);font-size:11px;white-space:nowrap;
+}
+.progress-panel{
+  margin-top:28px;background:var(--panel);border:1px solid var(--line);
+  border-radius:15px;padding:14px 16px;
+}
+.progress-head{display:flex;justify-content:space-between;font-size:11px;color:var(--muted)}
+.progress-head strong{color:var(--teal2)}
+.progress-track{height:6px;background:var(--bg2);border-radius:99px;overflow:hidden;margin-top:10px}
+#progressBar{
+  height:100%;width:0;min-width:0;
+  background:linear-gradient(90deg,var(--teal),var(--teal2));
+  box-shadow:0 0 14px #2a7d6e99;
+  transition:width .5s ease;
+}
+.progress-track{
+  height:10px!important;
+  border:1px solid var(--line);
+  background:#061b17!important;
+  box-shadow:inset 0 0 8px #0008;
+}
+.legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.legend span{
+  border:1px solid var(--line);padding:7px 9px;border-radius:8px;
+  font-size:10px;color:var(--muted);background:var(--panel);
+}
+main{width:min(1120px,92%);margin:auto;padding:10px 0 70px}
+.map{position:relative;display:grid;gap:0}
+.stage{
+  position:relative;width:min(450px,82%);padding:16px;
+  background:linear-gradient(145deg,var(--panel2),var(--panel));
+  border:1px solid var(--line);border-radius:16px;
+  box-shadow:0 12px 35px #0004;transition:.22s;
+}
+.stage:nth-child(even){margin-right:clamp(15%,30vw,53%)}
+.stage:nth-child(odd){margin-right:clamp(0%,5vw,8%)}
+.stage:hover{transform:translateY(-4px);border-color:var(--teal2);box-shadow:0 16px 40px #0005}
+.stage.locked{opacity:.58;filter:saturate(.5)}
+.stage.review{border-color:#75612b;background:linear-gradient(145deg,#211d10,var(--panel))}
+.stage-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.num{font-size:10px;color:var(--teal2)}
+.stage-state{font-size:9px;color:var(--muted)}
+.title{font-size:16px;font-weight:900;line-height:1.7;margin:7px 0}
+.sub{color:var(--muted);font-size:10px;line-height:1.8}
+.actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.actions a{
+  color:var(--text);text-decoration:none;border:1px solid var(--line);
+  padding:8px 9px;border-radius:8px;font-size:10px;background:var(--bg2);
+  transition:.18s;
+}
+.actions a:hover{border-color:var(--teal2);background:var(--panel2)}
+.actions a.exam{background:var(--teal);border-color:var(--teal);font-weight:900}
+.actions a.disabled{pointer-events:none;opacity:.4}
+.status{margin-top:10px;font-size:10px}
+.pass{color:#54d6ad}.open{color:var(--teal2)}.lock{color:var(--gold)}
+.path{
+  height:38px;width:2px;background:linear-gradient(var(--teal),transparent);
+  margin-right:19%;opacity:.55;position:relative;
+}
+.path:after{
+  content:"";position:absolute;top:16px;right:-3px;width:6px;height:6px;
+  border-radius:50%;background:var(--teal);
+}
+@media(max-width:700px){
+  .nav-links{display:none}.menu-btn{display:block}
+  .hero{padding-top:30px}.hero-top{flex-direction:column}
+  .hero-badge{align-self:flex-start}
+  .stage,.stage:nth-child(even),.stage:nth-child(odd){width:100%;margin-right:0}
+  .path{margin-right:50%}
+}
+@media(prefers-reduced-motion:reduce){
+  *{scroll-behavior:auto!important;transition:none!important}
+}
+
+.ask-section{
+  width:min(760px,92%);
+  margin:12px auto 42px;
+  padding:20px;
+  background:linear-gradient(145deg,var(--panel2),var(--panel));
+  border:1px solid var(--line);
+  border-radius:16px;
+  box-shadow:0 14px 35px #0004;
+}
+.ask-head{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:15px;margin-bottom:14px;
+}
+.ask-title{font-size:15px;font-weight:900}
+.ask-hint{font-size:10px;color:var(--muted)}
+.ask-grid{display:grid;grid-template-columns:1fr 2fr;gap:10px}
+.ask-select,.ask-textarea{
+  width:100%;border:1px solid var(--line);background:var(--bg2);
+  color:var(--text);border-radius:10px;padding:12px;
+  font:inherit;font-size:11px;outline:none;transition:.2s;
+}
+.ask-select:focus,.ask-textarea:focus{border-color:var(--teal2);box-shadow:0 0 0 3px #46b19b18}
+.ask-textarea{min-height:120px;resize:vertical;grid-column:1/-1;line-height:1.8}
+.ask-send{
+  grid-column:1/-1;border:0;border-radius:10px;padding:13px;
+  background:var(--teal);color:white;font:inherit;font-weight:900;
+  cursor:pointer;transition:.2s;
+}
+.ask-send:hover{background:var(--teal2);transform:translateY(-1px)}
+.ask-error{display:none;color:var(--danger);font-size:10px;margin-top:8px}
+.map{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  padding:10px 0 30px;
+}
+.stage{
+  z-index:2;
+  width:min(450px,72%);
+}
+.stage.stage-right{align-self:flex-end;margin-right:5%}
+.stage.stage-left{align-self:flex-start;margin-left:5%}
+.path{
+  position:relative;
+  z-index:1;
+  width:72%;
+  height:76px;
+  margin:0 auto;
+  pointer-events:none;
+}
+.path svg{
+  display:block;
+  width:100%;
+  height:100%;
+  overflow:visible;
+}
+.path .road{
+  fill:none;
+  stroke:var(--teal);
+  stroke-width:2.2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  opacity:.72;
+}
+.path .road-glow{
+  fill:none;
+  stroke:var(--teal2);
+  stroke-width:6;
+  stroke-linecap:round;
+  opacity:.08;
+  filter:blur(3px);
+}
+.path .road-dot{
+  fill:var(--teal2);
+  filter:drop-shadow(0 0 5px var(--teal2));
+}
+.path .road-dash{
+  fill:none;
+  stroke:#8ee8d3;
+  stroke-width:1;
+  stroke-dasharray:3 7;
+  stroke-linecap:round;
+  opacity:.8;
+}
+@media(max-width:700px){
+  .ask-grid{grid-template-columns:1fr}
+  .ask-section{width:100%;margin-bottom:30px}
+  .stage,.stage.stage-right,.stage.stage-left{
+    width:92%;margin-left:auto;margin-right:auto;align-self:center;
+  }
+  .path{
+    width:78%;
+    height:52px;
+  }
+}
+
+/* PROGRAM 1SEC — NovaPay-inspired visual system */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Outfit:wght@500;600;700;800&display=swap');
+:root{
+  --np-bg:#0F1319;--np-bg2:#141920;--np-bg3:#1A2130;--np-bg4:#1E2838;
+  --np-sky:#4A9EE8;--np-sky2:#7EC8F0;--np-sky3:#2A6AAA;
+  --np-text:#E4EEF8;--np-text2:#8AAEC8;--np-text3:#506070;
+  --np-border:#1E3050;--np-border2:#2A4060;
+  --np-green:#3DCC8E;--np-red:#E85A5A;
+  --bg:var(--np-bg);--bg2:var(--np-bg2);--panel:var(--np-bg3);--panel2:var(--np-bg4);
+  --line:var(--np-border);--teal:var(--np-sky3);--teal2:var(--np-sky);--text:var(--np-text);--muted:var(--np-text2);
+  --good:var(--np-green);--bad:var(--np-red);
+  --silk:cubic-bezier(.16,1,.3,1);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',sans-serif!important;
+  background:var(--np-bg)!important;color:var(--np-text)!important;
+  transition:background .7s var(--silk),color .7s var(--silk)!important;
+}
+h1,h2,h3,.brand,.title,.score,.stage .num,.eyebrow,.ask-title{font-family:'Outfit',sans-serif!important;letter-spacing:-.02em}
+/* layered diagonal grid / editorial background */
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.32;
+  background-image:
+    repeating-linear-gradient(45deg,transparent 0,transparent 119px,rgba(74,158,232,.13) 119px,rgba(74,158,232,.13) 120px),
+    repeating-linear-gradient(-45deg,transparent 0,transparent 119px,rgba(74,158,232,.08) 119px,rgba(74,158,232,.08) 120px);
+  mask-image:radial-gradient(ellipse 90% 80% at 50% 0,#000 0%,transparent 82%);
+}
+.navbar{
+  background:rgba(15,19,25,.78)!important;border-bottom:1px solid var(--np-border)!important;
+  backdrop-filter:blur(20px)!important;
+  box-shadow:0 12px 40px rgba(0,0,0,.18);
+}
+.nav-inner{height:68px}
+.brand{font-weight:800!important;color:var(--np-text)!important}
+.brand span{color:var(--np-sky)!important}
+.nav-links a,.mobile-menu a{color:var(--np-text2)!important;transition:color .5s var(--silk),background .5s var(--silk),transform .5s var(--silk)!important}
+.nav-links a:hover,.mobile-menu a:hover{color:var(--np-text)!important;transform:translateY(-1px)}
+.theme-btn,.menu-btn{
+  background:var(--np-bg2)!important;border:1px solid var(--np-border2)!important;color:var(--np-text)!important;
+  border-radius:8px!important;transition:transform .5s var(--silk),border-color .5s var(--silk),background .5s var(--silk)!important
+}
+.theme-btn:hover,.menu-btn:hover{border-color:var(--np-sky)!important;background:var(--np-bg3)!important;transform:translateY(-2px)!important}
+.hero{position:relative;overflow:hidden}
+.hero:before{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;
+  background:radial-gradient(circle at 85% 20%,rgba(74,158,232,.10),transparent 38%);
+}
+.eyebrow{color:var(--np-sky)!important;letter-spacing:.12em!important}
+.hero p,.sub,.ask-hint,.muted,.stage-state,.progress-head,.legend span{color:var(--np-text2)!important}
+.hero-badge,.legend span{
+  background:rgba(74,158,232,.06)!important;border-color:rgba(74,158,232,.25)!important;color:var(--np-sky2)!important;
+}
+.progress-panel,.ask-section,.stage{
+  background:linear-gradient(145deg,var(--np-bg3),var(--np-bg2))!important;
+  border-color:var(--np-border)!important;box-shadow:0 20px 55px rgba(0,0,0,.22)!important;
+  border-radius:12px!important;
+  transition:transform .7s var(--silk),border-color .7s var(--silk),box-shadow .7s var(--silk)!important;
+}
+.stage:hover{transform:translateY(-4px)!important;border-color:var(--np-sky)!important;box-shadow:0 24px 65px rgba(0,0,0,.3),0 0 0 1px rgba(74,158,232,.08)!important}
+.stage.review{border-color:#4f5570!important;background:linear-gradient(145deg,#202737,var(--np-bg2))!important}
+.stage .num,.open,.pass{color:var(--np-sky)!important}
+.lock{color:#c6a75b!important}
+.actions a{
+  background:var(--np-bg2)!important;border-color:var(--np-border2)!important;color:var(--np-text)!important;
+  border-radius:7px!important;transition:transform .5s var(--silk),border-color .5s var(--silk),background .5s var(--silk)!important;
+}
+.actions a:hover{background:var(--np-bg3)!important;border-color:var(--np-sky)!important;transform:translateY(-2px)!important}
+.actions a.exam,.ask-send,.primary{
+  background:var(--np-sky)!important;border-color:var(--np-sky)!important;color:#081321!important;
+  transition:transform .5s var(--silk),background .5s var(--silk),box-shadow .5s var(--silk)!important;
+}
+.actions a.exam:hover,.ask-send:hover,.primary:hover{background:var(--np-sky2)!important;transform:translateY(-2px)!important;box-shadow:0 12px 32px rgba(74,158,232,.22)!important}
+.secondary{background:transparent!important;color:var(--np-text2)!important;border-color:var(--np-border2)!important}
+.path .road{stroke:var(--np-sky)!important}.path .road-glow{stroke:var(--np-sky)!important}.path .road-dot{fill:var(--np-sky2)!important}
+.ask-select,.ask-textarea{
+  background:var(--np-bg2)!important;color:var(--np-text)!important;border-color:var(--np-border2)!important;border-radius:8px!important;
+}
+.ask-select:focus,.ask-textarea:focus{border-color:var(--np-sky)!important;box-shadow:0 0 0 3px rgba(74,158,232,.10)!important}
+/* softer reveal language */
+.stage,.progress-panel,.ask-section{animation:none}
+@media(max-width:700px){.stage{border-radius:10px!important}}
+/* Light mode keeps the same blue editorial identity */
+:root[data-theme="light"]{
+  --np-bg:#f4f7fa;--np-bg2:#eaf0f6;--np-bg3:#ffffff;--np-bg4:#f1f5f9;
+  --np-text:#142333;--np-text2:#60788d;--np-text3:#7d8e9d;--np-border:#c8d7e5;--np-border2:#afc3d5;
+  --np-sky:#3d86c9;--np-sky2:#5aa9e8;--np-sky3:#2a6aaa;
+  --bg:var(--np-bg);--bg2:var(--np-bg2);--panel:var(--np-bg3);--panel2:var(--np-bg4);
+  --line:var(--np-border);--teal:var(--np-sky3);--teal2:var(--np-sky);--text:var(--np-text);--muted:var(--np-text2);
+  --good:var(--np-green);--bad:var(--np-red);
+}
+:root[data-theme="light"] body{background:var(--np-bg)!important}
+:root[data-theme="light"] body:before{opacity:.20}
+:root[data-theme="light"] .navbar{background:rgba(244,247,250,.86)!important}
+:root[data-theme="light"] .progress-panel,
+:root[data-theme="light"] .ask-section,
+:root[data-theme="light"] .stage{background:linear-gradient(145deg,#fff,#edf3f7)!important;box-shadow:0 18px 45px rgba(20,35,51,.08)!important}
+:root[data-theme="light"] .stage.review{background:linear-gradient(145deg,#f4f5f8,#fff)!important}
+
 </style>
 </head>
 <body>
-<main class="container">
-<section class="hero">
-<div class="eyebrow">PROGRAMMING COURSE</div>
-<h1>مسار تعلم البرمجة</h1>
-<p>ادرس المحتوى، شاهد الشرح، ثم اجتز الامتحان لفتح المرحلة التالية.</p>
-</section>
+<nav class="navbar">
+  <div class="nav-inner">
+    <a class="brand" href="#top">PROGRAM<span>1SEC</span></a>
 
-<section class="progress-card">
-<div class="progress-top"><strong>تقدمك في الكورس</strong><span id="progressText">0 / 17</span></div>
-<div class="progress"><div id="progressBar"></div></div>
-</section>
+    <div class="nav-links">
+      <a href="#top">Home</a>
+      <a href="#map">Stage Map</a>
+      <a href="#progress">Progress</a>
+    </div>
 
-<section id="stages" class="grid"></section>
+    <div class="nav-actions">
+      <button id="themeToggle" class="theme-btn" type="button" aria-label="تغيير المظهر">
+        <span id="themeIcon">☀</span>
+        <span id="themeText">Light</span>
+      </button>
+      <button id="menuToggle" class="menu-btn" type="button" aria-label="فتح القائمة">☰</button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="mobile-menu">
+    <a href="#top">Home</a>
+    <a href="#map">Stage Map</a>
+    <a href="#progress">Progress</a>
+  </div>
+</nav>
 
-<div class="notice">
-<strong>نظام الفتح:</strong> تبدأ من Chapter 1. تحتاج إلى الحصول على <strong>60%</strong> أو أكثر في امتحان كل مرحلة لفتح المرحلة التالية.
-</div>
+<header id="top" class="hero">
+  <div class="hero-top">
+    <div>
+      <div class="eyebrow">◈ INFORMATION LEARNING SYSTEM</div>
+      <h1>Learning Map</h1>
+      <p>Follow the path, complete each stage, and pass the exam to unlock the next stage.</p>
+    </div>
+    <div class="hero-badge">17 STAGES</div>
+  </div>
+
+  <div id="progress" class="progress-panel">
+    <div class="progress-head">
+      <span>PROGRESS</span>
+      <strong id="progressText">0 / 17</strong>
+    </div>
+    <div class="progress-track"><div id="progressBar"></div></div>
+  </div>
+
+  <div class="legend">
+    <span>📖 BOOK</span>
+    <span>📄 SUMMARY</span>
+    <span>🎬 VIDEO</span>
+    <span>📝 EXAM</span>
+    <span>🔒 LOCKED</span>
+  </div>
+</header>
+
+<main>
+  <section id="ask" class="ask-section">
+    <div class="ask-head">
+      <div class="ask-title">💬 ASK A QUESTION</div>
+      <div class="ask-hint">Choose the chapter, then write your question.</div>
+    </div>
+
+    <div class="ask-grid">
+      <select id="askChapter" class="ask-select" aria-label="Select chapter">
+        <option value="">Select Chapter</option>
+        <option value="Chapter 1">Chapter 1: What is Information?</option>
+        <option value="Chapter 2">Chapter 2: Regulations and Rights</option>
+        <option value="Chapter 3">Chapter 3: Information Security</option>
+        <option value="Chapter 4">Chapter 4: Information Technology and Society</option>
+        <option value="Chapter 5">Chapter 5: Communication</option>
+        <option value="Chapter 6">Chapter 6: Information Design</option>
+        <option value="Chapter 7">Chapter 7: Computers</option>
+        <option value="Chapter 8">Chapter 8: Networks</option>
+        <option value="Chapter 9">Chapter 9: Databases</option>
+        <option value="Chapter 10">Chapter 10: Data Analysis</option>
+        <option value="Chapter 11">Chapter 11: Simulations</option>
+        <option value="Chapter 12">Chapter 12: Programming (Python)</option>
+        <option value="Chapter 13">Chapter 13: AI Programming</option>
+      </select>
+
+      <textarea id="askQuestion" class="ask-textarea"
+        placeholder="Write your question here..." aria-label="Question"></textarea>
+
+      <button id="askSend" class="ask-send" type="button">📱 Send Question on WhatsApp</button>
+    </div>
+    <div id="askError" class="ask-error"></div>
+  </section>
+
+  <section id="map" class="map"></section>
 </main>
 
 <script>
-const CONFIG_FILE="links.json";
-let config=null;
-let progress={};
+const PASS = 60;
+const KEY = "program1sec_exam_";
+const THEME_KEY = "program1sec-theme";
 
-function loadProgress(){
-  try{progress=JSON.parse(localStorage.getItem("programmingCourseProgress")||"{}")}catch(e){progress={}}
-}
-function saveProgress(){localStorage.setItem("programmingCourseProgress",JSON.stringify(progress))}
-function isUnlocked(index){
-  if(index===0)return true;
-  return !!progress[config.stages_order[index-1]];
-}
-function isDone(key){return !!progress[key]?.passed}
+const root = document.documentElement;
+const themeToggle = document.getElementById("themeToggle");
+const themeIcon = document.getElementById("themeIcon");
+const themeText = document.getElementById("themeText");
+const menuToggle = document.getElementById("menuToggle");
+const mobileMenu = document.getElementById("mobileMenu");
 
-function render(){
-  const container=document.getElementById("stages");
-  container.innerHTML="";
-  let doneCount=0;
-  config.stages_order.forEach((key,index)=>{
-    const item=config.links[key];
-    const unlocked=isUnlocked(index);
-    const done=isDone(key);
-    if(done)doneCount++;
-    const article=document.createElement("article");
-    article.className=`stage ${unlocked?"unlocked":"locked"} ${done?"done":""}`;
-    article.innerHTML=`
-      ${!unlocked?'<div class="lock">🔒</div>':''}
-      <div class="num">المرحلة ${String(index+1).padStart(2,"0")}</div>
-      <div class="stage-title">${item.title}</div>
-      <div class="status">${done?"✓ تم اجتياز المرحلة":unlocked?"متاحة للدراسة":"أكمل المرحلة السابقة أولاً"}</div>
-      ${unlocked?`
-      <div class="content-links">
-        ${item.book?`<a class="btn" href="${item.book}" target="_blank">📖 كتاب المدرسة</a>`:""}
-        ${item.summary?`<a class="btn" href="${item.summary}" target="_blank">📄 الملخص</a>`:""}
-        ${item.video?`<a class="btn" href="${item.video}" target="_blank">🎬 فيديو الشرح</a>`:""}
-        ${item.exam?`<a class="btn primary" href="${item.exam}">📝 الامتحان</a>`:""}
-      </div>`:""}
-    `;
-    container.appendChild(article);
-  });
-  const percent=Math.round((doneCount/config.stages_order.length)*100);
-  document.getElementById("progressText").textContent=`${doneCount} / ${config.stages_order.length}`;
-  document.getElementById("progressBar").style.width=percent+"%";
-}
+function applyTheme(theme) {
+  root.dataset.theme = theme;
+  localStorage.setItem(THEME_KEY, theme);
 
-async function init(){
-  loadProgress();
-  try{
-    const response=await fetch(CONFIG_FILE,{cache:"no-store"});
-    config=await response.json();
-    render();
-  }catch(error){
-    document.getElementById("stages").innerHTML='<div class="notice">تعذر تحميل links.json. تأكد أن الملف موجود بجوار index.html.</div>';
+  if (theme === "light") {
+    themeIcon.textContent = "☾";
+    themeText.textContent = "Dark";
+  } else {
+    themeIcon.textContent = "☀";
+    themeText.textContent = "Light";
   }
 }
-init();
+
+applyTheme(localStorage.getItem(THEME_KEY) || "dark");
+
+themeToggle.addEventListener("click", () => {
+  applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
+});
+
+menuToggle.addEventListener("click", () => {
+  mobileMenu.classList.toggle("open");
+});
+
+
+document.querySelectorAll(".mobile-menu a").forEach(a => {
+  a.addEventListener("click", () => mobileMenu.classList.remove("open"));
+});
+
+const askChapter = document.getElementById("askChapter");
+const askQuestion = document.getElementById("askQuestion");
+const askSend = document.getElementById("askSend");
+const askError = document.getElementById("askError");
+
+askSend.addEventListener("click", () => {
+  const chapter = askChapter.value.trim();
+  const question = askQuestion.value.trim();
+
+  if (!chapter || !question) {
+    askError.textContent = !chapter
+      ? "Please select the chapter first."
+      : "Please write your question first.";
+    askError.style.display = "block";
+    return;
+  }
+
+  askError.style.display = "none";
+
+  const message =
+`السلام عليكم ورحمة الله وبركاته
+عندي سؤال في "${chapter}"
+------------------------
+${question}`;
+
+  const whatsappNumber = "201007408751";
+  const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+  window.open(url, "_blank", "noopener,noreferrer");
+});
+
+function renderProgress(stages) {
+  const completed = stages.filter(s => localStorage.getItem(KEY + s.id) === "passed").length;
+  const percent = Math.round((completed / stages.length) * 100);
+  document.getElementById("progressText").textContent = `${completed} / ${stages.length}`;
+  document.getElementById("progressBar").style.width = percent + "%";
+}
+
+const EMBEDDED_COURSE_DATA = {"settings":{"passPercentage":60,"examCount":17,"storagePrefix":"program1sec_exam_","indexFile":"index.html"},"stages":[{"id":1,"type":"chapter","title":"Chapter 1: What is Information?","unlockAfter":null,"book":"Chapter 1.pdf","summary":"Chapter 1 Summary.pdf","video":"Chapter 1.mp4","exam":"test1.html"},{"id":2,"type":"chapter","title":"Chapter 2: Regulations and Rights in the Information Society","unlockAfter":1,"book":"Chapter 2.pdf","summary":"Chapter 2 Summary.pdf","video":"Chapter 2.mp4","exam":"test2.html"},{"id":3,"type":"chapter","title":"Chapter 3: Information Security","unlockAfter":2,"book":"Chapter 3.pdf","summary":"Chapter 3 Summary.pdf","video":"Chapter 3.mp4","exam":"test3.html"},{"id":4,"type":"review","title":"Review: Chapters 1–3","subtitle":"Comprehensive review of Chapters 1–3","chapters":[1,3],"unlockAfter":3,"book":"Review 1-3.pdf","summary":"Review 1-3 Summary.pdf","video":"Review 1-3.mp4","exam":"test14.html"},{"id":5,"type":"chapter","title":"Chapter 4: Information Technology and Society","unlockAfter":4,"book":"Chapter 4.pdf","summary":"Chapter 4 Summary.pdf","video":"Chapter 4.mp4","exam":"test4.html"},{"id":6,"type":"chapter","title":"Chapter 5: Communication","unlockAfter":5,"book":"Chapter 5.pdf","summary":"Chapter 5 Summary.pdf","video":"Chapter 5.mp4","exam":"test5.html"},{"id":7,"type":"chapter","title":"Chapter 6: Information Design","unlockAfter":6,"book":"Chapter 6.pdf","summary":"Chapter 6 Summary.pdf","video":"Chapter 6.mp4","exam":"test6.html"},{"id":8,"type":"review","title":"Review: Chapters 4–6","subtitle":"Comprehensive review of Chapters 4–6","chapters":[4,6],"unlockAfter":7,"book":"Review 4-6.pdf","summary":"Review 4-6 Summary.pdf","video":"Review 4-6.mp4","exam":"test15.html"},{"id":9,"type":"chapter","title":"Chapter 7: Computers","unlockAfter":8,"book":"Chapter 7.pdf","summary":"Chapter 7 Summary.pdf","video":"Chapter 7.mp4","exam":"test7.html"},{"id":10,"type":"chapter","title":"Chapter 8: Networks","unlockAfter":9,"book":"Chapter 8.pdf","summary":"Chapter 8 Summary.pdf","video":"Chapter 8.mp4","exam":"test8.html"},{"id":11,"type":"chapter","title":"Chapter 9: Databases","unlockAfter":10,"book":"Chapter 9.pdf","summary":"Chapter 9 Summary.pdf","video":"Chapter 9.mp4","exam":"test9.html"},{"id":12,"type":"review","title":"Review: Chapters 7–9","subtitle":"Comprehensive review of Chapters 7–9","chapters":[7,9],"unlockAfter":11,"book":"Review 7-9.pdf","summary":"Review 7-9 Summary.pdf","video":"Review 7-9.mp4","exam":"test16.html"},{"id":13,"type":"chapter","title":"Chapter 10: Data Analysis","unlockAfter":12,"book":"Chapter 10.pdf","summary":"Chapter 10 Summary.pdf","video":"Chapter 10.mp4","exam":"test10.html"},{"id":14,"type":"chapter","title":"Chapter 11: Simulations","unlockAfter":13,"book":"Chapter 11.pdf","summary":"Chapter 11 Summary.pdf","video":"Chapter 11.mp4","exam":"test11.html"},{"id":15,"type":"chapter","title":"Chapter 12: Programming (Python)","unlockAfter":14,"book":"Chapter 12.pdf","summary":"Chapter 12 Summary.pdf","video":"Chapter 12.mp4","exam":"test12.html"},{"id":16,"type":"review","title":"Review: Chapters 10–12","subtitle":"Comprehensive review of Chapters 10–12","chapters":[10,12],"unlockAfter":15,"book":"Review 10-12.pdf","summary":"Review 10-12 Summary.pdf","video":"Review 10-12.mp4","exam":"test17.html"},{"id":17,"type":"chapter","title":"Chapter 13: AI Programming","unlockAfter":16,"book":"Chapter 13.pdf","summary":"Chapter 13 Summary.pdf","video":"Chapter 13.mp4","exam":"test13.html"}]};
+
+function renderCourse(data) {
+    const map = document.getElementById("map");
+
+    data.stages.forEach((s, i) => {
+      const unlocked = s.id === 1 || localStorage.getItem(KEY + (s.id - 1)) === "passed";
+      const completed = localStorage.getItem(KEY + s.id) === "passed";
+
+      const el = document.createElement("article");
+      el.className =
+        "stage " +
+        (i % 2 === 0 ? "stage-right " : "stage-left ") +
+        (s.type === "review" ? "review " : "") +
+        (unlocked ? "" : "locked");
+
+      el.innerHTML = `
+        <div class="stage-head">
+          <div class="num">${s.type === "review" ? "◆ " + s.id + " // REVIEW" : "STAGE " + String(s.id).padStart(2, "0")}</div>
+          <div class="stage-state">${completed ? "✓ COMPLETE" : unlocked ? "● OPEN" : "🔒 LOCKED"}</div>
+        </div>
+        <div class="title">${s.type === "review" ? "🔁 " : "🎮 "}${s.title}</div>
+        <div class="sub">${s.subtitle || "المحتوى + Summary + فيديو الشرح + Exam"}</div>
+        <div class="actions">
+          <a class="${unlocked ? "" : "disabled"}" href="${s.book}">📖 Book</a>
+          <a class="${unlocked ? "" : "disabled"}" href="${s.summary}">📄 Summary</a>
+          <a class="${unlocked ? "" : "disabled"}" href="${s.video}">🎬 Video</a>
+          <a class="exam ${unlocked ? "" : "disabled"}" href="${s.exam}">${completed ? "✓" : "📝"} Exam</a>
+        </div>
+        <div class="status ${completed ? "pass" : unlocked ? "open" : "lock"}">
+          ${completed ? "✓ STAGE COMPLETED" : unlocked ? "● STAGE UNLOCKED" : "🔒 PASS THE PREVIOUS STAGE"}
+        </div>
+      `;
+
+      map.appendChild(el);
+
+      if (i < data.stages.length - 1) {
+        const p = document.createElement("div");
+        p.className = "path";
+        const leftTurn = i % 2 === 0;
+        p.innerHTML = leftTurn ? `
+          <svg viewBox="0 0 100 76" preserveAspectRatio="none" aria-hidden="true">
+            <path class="road-glow" d="M82 0 C82 28 18 48 18 76"/>
+            <path class="road" d="M82 0 C82 28 18 48 18 76"/>
+            <path class="road-dash" d="M82 0 C82 28 18 48 18 76"/>
+            <circle class="road-dot" cx="82" cy="0" r="2.6"/>
+            <circle class="road-dot" cx="18" cy="76" r="2.6"/>
+          </svg>` : `
+          <svg viewBox="0 0 100 76" preserveAspectRatio="none" aria-hidden="true">
+            <path class="road-glow" d="M18 0 C18 28 82 48 82 76"/>
+            <path class="road" d="M18 0 C18 28 82 48 82 76"/>
+            <path class="road-dash" d="M18 0 C18 28 82 48 82 76"/>
+            <circle class="road-dot" cx="18" cy="0" r="2.6"/>
+            <circle class="road-dot" cx="82" cy="76" r="2.6"/>
+          </svg>`;
+        map.appendChild(p);
+      }
+    });
+
+    renderProgress(data.stages);
+}
+
+if (window.location.protocol === "file:") {
+  // Browsers block fetch("course-data.json") from file:// pages.
+  // Use the embedded copy so index.html works by double-clicking it.
+  renderCourse(EMBEDDED_COURSE_DATA);
+} else {
+  fetch("course-data.json")
+    .then(r => {
+      if (!r.ok) throw new Error("course-data.json could not be loaded");
+      return r.json();
+    })
+    .then(renderCourse)
+    .catch(() => renderCourse(EMBEDDED_COURSE_DATA));
+}
 </script>
+
+<script>
+(function () {
+  const KEY = 'program1sec-theme';
+  const root = document.documentElement;
+  const button = document.querySelector('[data-theme-toggle], #themeToggle, .theme-toggle, #theme-toggle');
+
+  function applyTheme(theme) {
+    const value = theme === 'dark' ? 'dark' : 'light';
+    root.setAttribute('data-theme', value);
+    root.classList.toggle('dark', value === 'dark');
+    root.classList.toggle('light', value === 'light');
+    if (button) {
+      button.setAttribute('aria-pressed', value === 'dark' ? 'true' : 'false');
+      const label = button.querySelector('[data-theme-label]');
+      if (label) label.textContent = value === 'dark' ? 'Light mode' : 'Dark mode';
+      button.title = value === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+    }
+  }
+
+  let saved = null;
+  try { saved = localStorage.getItem(KEY); } catch (_) {}
+  const initial = saved === 'dark' || saved === 'light'
+    ? saved
+    : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+  applyTheme(initial);
+
+  if (button && !button.dataset.themeBound) {
+    button.dataset.themeBound = '1';
+    button.addEventListener('click', function () {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      try { localStorage.setItem(KEY, next); } catch (_) {}
+    });
+  }
+
+  if (!document.getElementById('program1sec-theme-fix')) {
+    const style = document.createElement('style');
+    style.id = 'program1sec-theme-fix';
+    style.textContent = `
+      :root[data-theme="light"] {
+        color-scheme: light;
+      }
+      :root[data-theme="dark"] {
+        color-scheme: dark;
+      }
+      :root[data-theme="dark"] body {
+        background: #071b18 !important;
+        color: #e8fffa !important;
+      }
+      :root[data-theme="dark"] header,
+      :root[data-theme="dark"] nav,
+      :root[data-theme="dark"] .navbar,
+      :root[data-theme="dark"] .nav,
+      :root[data-theme="dark"] .card,
+      :root[data-theme="dark"] .stage-card,
+      :root[data-theme="dark"] .panel,
+      :root[data-theme="dark"] .modal,
+      :root[data-theme="dark"] .question-card,
+      :root[data-theme="dark"] .quiz-card,
+      :root[data-theme="dark"] .faq-item {
+        background-color: #0d2925 !important;
+        color: #e8fffa !important;
+        border-color: #246b5e !important;
+      }
+      :root[data-theme="dark"] input,
+      :root[data-theme="dark"] textarea,
+      :root[data-theme="dark"] select {
+        background: #081f1c !important;
+        color: #e8fffa !important;
+        border-color: #2a7d6e !important;
+      }
+      :root[data-theme="dark"] a,
+      :root[data-theme="dark"] .nav-link {
+        color: #8ee8d5 !important;
+      }
+      :root[data-theme="dark"] .muted,
+      :root[data-theme="dark"] .subtitle,
+      :root[data-theme="dark"] .description {
+        color: #b7d8d2 !important;
+      }
+      :root[data-theme="light"] body {
+        background: #ffffff !important;
+        color: #163c36 !important;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+})();
+</script>
+
 </body>
 </html>
