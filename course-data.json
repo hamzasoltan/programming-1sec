@@ -66,8 +66,8 @@
       "type": "chapter",
       "title": "Chapter 5: Communication",
       "unlockAfter": 5,
-      "book": "Chapter 5.pdf",
-      "summary": "Chapter 5 Summary.pdf",
+      "book": "https://drive.google.com/file/d/1prpSmzi-ht8l7ulzutllqajSl3i0kKbu/view?usp=drive_link",
+      "summary": "https://drive.google.com/file/d/1RwxB9Goz-KH6N4Xx5vq00aFDJW8lKwER/view?usp=drive_link",
       "video": "Chapter 5.mp4",
       "exam": "test5.html"
     },
