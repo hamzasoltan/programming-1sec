@@ -428,33 +428,46 @@ body:before{
 <script>
 const PASS = 60;
 const KEY = "program1sec_exam_";
-const THEME_KEY = "program1sec-theme";
-
-const root = document.documentElement;
-const themeToggle = document.getElementById("themeToggle");
-const themeIcon = document.getElementById("themeIcon");
-const themeText = document.getElementById("themeText");
+const THEME_KEY='program1sec-theme';
+const root=document.documentElement;
+const themeToggle=document.getElementById('themeToggle');
+const themeIcon=document.getElementById('themeIcon');
+const themeText=document.getElementById('themeText');
 const menuToggle = document.getElementById("menuToggle");
 const mobileMenu = document.getElementById("mobileMenu");
 
-function applyTheme(theme) {
-  root.dataset.theme = theme;
-  localStorage.setItem(THEME_KEY, theme);
+function applyTheme(theme,save=true){
+  const value=theme==='dark'?'dark':'light';
+  root.setAttribute('data-theme',value);
+  root.classList.toggle('dark',value==='dark');
+  root.classList.toggle('light',value==='light');
 
-  if (theme === "light") {
-    themeIcon.textContent = "☾";
-    themeText.textContent = "Dark";
-  } else {
-    themeIcon.textContent = "☀";
-    themeText.textContent = "Light";
+  if(themeIcon) themeIcon.textContent=value==='dark'?'☀':'☾';
+  if(themeText) themeText.textContent=value==='dark'?'Light':'Dark';
+
+  if(themeToggle){
+    themeToggle.setAttribute('aria-pressed',value==='dark'?'true':'false');
+    themeToggle.title=value==='dark'?'Switch to light mode':'Switch to dark mode';
+  }
+
+  if(save){
+    try{localStorage.setItem(THEME_KEY,value)}catch(e){}
   }
 }
 
-applyTheme(localStorage.getItem(THEME_KEY) || "dark");
+let saved=null;
+try{saved=localStorage.getItem(THEME_KEY)}catch(e){}
+const initial=(saved==='dark'||saved==='light')
+  ? saved
+  : ((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');
 
-themeToggle.addEventListener("click", () => {
-  applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
-});
+applyTheme(initial,false);
+
+if(themeToggle){
+  themeToggle.addEventListener('click',()=>applyTheme(
+    root.getAttribute('data-theme')==='dark'?'light':'dark'
+  ));
+}
 
 menuToggle.addEventListener("click", () => {
   mobileMenu.classList.toggle("open");
