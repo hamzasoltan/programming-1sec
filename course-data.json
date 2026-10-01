@@ -12,8 +12,8 @@
       "title": "Chapter 1: What is Information?",
       "unlockAfter": null,
       "book": "https://drive.google.com/file/d/1p2bsXA_rgtw_cgSrZ6Xck6OFwCuf-gac/preview",
-      "summary": "https://drive.google.com/file/d/1PgGSQeYgZCEjQvx8O-tDc2nFbHp_ihmi/view?usp=drive_link",
-      "video": "https://drive.google.com/file/d/1zm_iCW5pR1Aqe5-7rOsF9qMtZEg7MT7d/view?usp=drive_link",
+      "summary": "https://drive.google.com/file/d/1PgGSQeYgZCEjQvx8O-tDc2nFbHp_ihmi/preview",
+      "video": "https://drive.google.com/file/d/1zm_iCW5pR1Aqe5-7rOsF9qMtZEg7MT7d/preview",
       "exam": "test1.html"
     },
     {
@@ -21,9 +21,9 @@
       "type": "chapter",
       "title": "Chapter 2: Regulations and Rights in the Information Society",
       "unlockAfter": 1,
-      "book": "https://drive.google.com/file/d/1d-F50-D9eIRShMoY0C5iM4O-64_e2XdD/view?usp=drive_link",
-      "summary": "https://drive.google.com/file/d/1B4rxG5AN64doGB5CBJnX-z6T85jr0tqE/view?usp=drive_link",
-      "video": "https://drive.google.com/file/d/1m9P09o2qT7s_dymlm_dqg112B4MJIO46/view?usp=drive_link",
+      "book": "https://drive.google.com/file/d/1d-F50-D9eIRShMoY0C5iM4O-64_e2XdD/preview",
+      "summary": "https://drive.google.com/file/d/1B4rxG5AN64doGB5CBJnX-z6T85jr0tqE/preview",
+      "video": "https://drive.google.com/file/d/1m9P09o2qT7s_dymlm_dqg112B4MJIO46/preview",
       "exam": "test2.html"
     },
     {
@@ -31,9 +31,9 @@
       "type": "chapter",
       "title": "Chapter 3: Information Security",
       "unlockAfter": 2,
-      "book": "https://drive.google.com/file/d/1dV1ZY0_yHW12OUKYRKLkjizoS9yWkr01/view?usp=drive_link",
-      "summary": "https://drive.google.com/file/d/1T1D3S_NBaqZmbAojDmxNIeP1g63WlhRL/view?usp=drive_link",
-      "video": "https://drive.google.com/file/d/1lKKt9zXmn-3wDduhbLhj9aYcvQ0e8l3r/view?usp=drive_link",
+      "book": "https://drive.google.com/file/d/1dV1ZY0_yHW12OUKYRKLkjizoS9yWkr01/preview",
+      "summary": "https://drive.google.com/file/d/1T1D3S_NBaqZmbAojDmxNIeP1g63WlhRL/preview",
+      "video": "https://drive.google.com/file/d/1lKKt9zXmn-3wDduhbLhj9aYcvQ0e8l3r/preview",
       "exam": "test3.html"
     },
     {
